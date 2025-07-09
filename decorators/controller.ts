@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
-import { getFullPath, router } from './utils';
+import { KEY } from './models';
+import { getFullPath, getParameters, router } from './utils';
 
 export function RestController(target: any) {
-  const rootPath = Reflect.getMetadata('rootPath', target) ?? '/';
+  const rootPath = Reflect.getMetadata(KEY.rootPath, target) ?? '/';
 
   for (let methodName of Reflect.ownKeys(target?.prototype || {})) {
-    const requestType = Reflect.getMetadata('requestType', target.prototype, methodName);
-    const requestPath = Reflect.getMetadata('requestPath', target.prototype, methodName);
+    const requestType = Reflect.getMetadata(KEY.requestType, target.prototype, methodName);
+    const requestPath = Reflect.getMetadata(KEY.requestPath, target.prototype, methodName);
 
     if (requestType && requestPath) {
       const handler = target.prototype[methodName];
@@ -14,7 +15,8 @@ export function RestController(target: any) {
 
       router[requestType](fullPath, (req: Request, res: Response) => {
         try {
-          const response = handler();
+          const args = getParameters(target, methodName, req);
+          const response = handler(...args);
           res.send(response);
         } catch(e: any) {
             const code = e?.code || 500;

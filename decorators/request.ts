@@ -1,10 +1,10 @@
-import { RequestType } from './models';
+import { KEY, RequestType } from './models';
 
 function getRequestDecorator(requestType: RequestType) {
   return function(requestPath: string) {
     return (target: any, methodName: string | symbol) => {
-      Reflect.defineMetadata('requestType', requestType, target, methodName);
-      Reflect.defineMetadata('requestPath', requestPath, target, methodName);
+      Reflect.defineMetadata(KEY.requestType, requestType, target, methodName);
+      Reflect.defineMetadata(KEY.requestPath, requestPath, target, methodName);
     }
   }
 }
@@ -17,6 +17,6 @@ export const DeleteMapping = getRequestDecorator('delete');
 
 export function RequestMapping(rootPath: string) {
   return (target: any) => {
-    Reflect.defineMetadata('rootPath', rootPath, target);
+    Reflect.defineMetadata(KEY.rootPath, rootPath, target);
   };
 }
