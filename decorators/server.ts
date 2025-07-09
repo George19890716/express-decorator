@@ -1,8 +1,8 @@
 import express from 'express';
+import cors from 'cors';
 
 export function Server (target: any) {
   const app = express();
-  const cors = require('cors');
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));

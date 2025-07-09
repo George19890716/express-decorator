@@ -1,6 +1,6 @@
-.git/
+.git
 node_modules/
-src/
-.npmignore
+decorators/
 package-lock.json
 tsconfig.json
+tsup.config.ts
