@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
-import { router  } from './utils';
+import { getFullPath, router } from './utils';
 
 export function RestController(target: any) {
+  const rootPath = Reflect.getMetadata('rootPath', target) ?? '/';
+
   for (let methodName of Reflect.ownKeys(target?.prototype || {})) {
     const requestType = Reflect.getMetadata('requestType', target.prototype, methodName);
     const requestPath = Reflect.getMetadata('requestPath', target.prototype, methodName);
 
     if (requestType && requestPath) {
       const handler = target.prototype[methodName];
-      const fullPath = requestPath;
+      const fullPath = getFullPath({ rootPath, requestPath });
 
       router[requestType](fullPath, (req: Request, res: Response) => {
         try {
