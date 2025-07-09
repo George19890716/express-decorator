@@ -9,7 +9,11 @@ export enum KEY {
 };
 
 export enum ParameterType {
-  Body = 'requestBody',
+  Body,
+  Query,
+  Queries,
+  Header,
+  Headers,
 }
 
 export interface ParameterInfo {

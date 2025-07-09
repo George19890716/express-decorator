@@ -7,7 +7,15 @@ const getParameter = function(request: Request, parameterInfo: ParameterInfo): a
   const { type, name } = parameterInfo;
   switch(type) {
     case ParameterType.Body:
-      return body
+      return body;
+    case ParameterType.Queries:
+      return query;
+    case ParameterType.Query:
+      return query[name];
+    case ParameterType.Headers:
+      return headers;
+    case ParameterType.Header:
+      return headers[name];
     default: return {};
   }
 }
@@ -17,6 +25,12 @@ export const getParameters = function (target: any, methodName: string | symbol,
   const parametersMap = getParametersMap(target.prototype, methodName);
   parametersMap.forEach((parameterInfo: ParameterInfo, index: number) => {
     args[index] = getParameter(request, parameterInfo);
-  });
+    if (parameterInfo.required && args[index] === undefined) {
+        throw {
+          code: 400,
+          message: `Parameter ${parameterInfo.name} is required!`
+        };
+    }
+  }); 
   return args;
 }
