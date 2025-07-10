@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "author": "Xu Ming <xumingxiaoming@163.com>",
   "contributors": [
+    "Li Songjing <songjingcode@gmail.com>",
     "Yi Xuelian <ylian06@qq.com>"
   ],
-  "description": "Fast, easily to implemented api via decorators",
+  "description": "Decorators toolkits to implement express application more easily",
   "repository": "https://github.com/George19890716/express-decorator",
   "license": "ISC",
   "main": "lib/index.js",
