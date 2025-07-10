@@ -1,31 +1,44 @@
 {
-  "name": "express-capsule",
+  "name": "express-spring",
   "version": "1.0.0",
- "main": "lib/index.js",
- "types": "lib/index.d.ts",
- "exports": {
-  ".": {
-   "import": "./lib/index.mjs",
-   "require": "./lib/index.js"
+  "author": "Xu Ming <xumingxiaoming@163.com>",
+  "description": "Fast, easily to implemented api via decorators",
+  "repository": "https://github.com/George19890716/express-decorator",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "decorator",
+    "express",
+    "spring",
+    "http",
+    "restful",
+    "router",
+    "app",
+    "api"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "module-alias": "^2.2.3",
+    "reflect-metadata": "^0.2.2"
+  },
+  "engines": {
+    "node": ">= 18"
   }
- },
- "scripts": {
-  "build": "tsup",
-  "test": "echo \"Error: no test specified\" && exit 1"
- },
- "keywords": [],
- "author": "",
- "license": "ISC",
- "devDependencies": {
-  "@types/node": "^24.0.10",
-  "tsup": "^8.5.0",
-  "typescript": "^5.8.3"
- },
- "dependencies": {
-  "cors": "^2.8.5",
-  "express": "^5.1.0",
-  "fs-extra": "^11.3.0",
-  "module-alias": "^2.2.3",
-  "reflect-metadata": "^0.2.2"
- }
 }
