@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { router } from '../utils';
 
-export function ExpressApplication (target: any) {
+export function ExpressApplication(target: any) {
   const app = express();
 
   app.use(express.json());
