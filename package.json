@@ -8,7 +8,7 @@
   ],
   "description": "Decorators toolkits to implement express application more easily",
   "repository": "https://github.com/George19890716/express-decorator",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "exports": {

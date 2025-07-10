@@ -75,4 +75,4 @@ npm install express-spring
 
 ## License
 
-  [ISC](LICENSE)
+  [MIT](LICENSE)
