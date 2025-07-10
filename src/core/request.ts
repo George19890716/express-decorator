@@ -1,4 +1,4 @@
-import { KEY, RequestType } from './models';
+import { KEY, RequestType } from '../models';
 
 function getRequestDecorator(requestType: RequestType) {
   return function(requestPath: string) {

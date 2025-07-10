@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { router } from './utils';
+import { router } from '../utils';
 
 export function Server (target: any) {
   const app = express();

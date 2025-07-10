@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { KEY } from './models';
-import { getFullPath, getParameters, router } from './utils';
+import { KEY } from '../models';
+import { getFullPath, getParameters, router } from '../utils';
 
 export function RestController(target: any) {
   const rootPath = Reflect.getMetadata(KEY.rootPath, target) ?? '/';

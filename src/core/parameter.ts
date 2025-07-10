@@ -1,5 +1,5 @@
-import { ParameterType } from './models';
-import { getParametersMap, setParametersMap } from './utils';
+import { ParameterType } from '../models';
+import { getParametersMap, setParametersMap } from '../utils';
 
 export function RequestBody(
   target: any, 
