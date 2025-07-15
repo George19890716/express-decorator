@@ -1,28 +1,29 @@
 # express-spring
-Decorators toolkits to implement express application more easily
+  Decorators toolkits to implement express application more easily
 
-* [Installation](#Installation)
-* [Features](#Features)
-* [Quick Start](#Quick-Start)
-* [Developers](#Developers)
-* [License](#license)
+  * [Installation](#Installation)
+  * [Features](#Features)
+  * [Quick Start](#Quick-Start)
+  * [Examples](#Examples)
+  * [Developers](#Developers)
+  * [License](#license)
 
 ## Installation 
 
-This is a dependency based on Node.js.
+  This is a dependency based on Node.js.
 
-Before installing, download and install Node.js. Node.js 18 or higher is required.
+  Before installing, download and install Node.js. Node.js 18 or higher is required.
 
-```bash
-npm install express-spring
-```
+  ```bash
+  npm install express-spring
+  ```
 
 ## Features
 
-  Application Decorator
+  Application Decorator: Using to implement an Express Application
   * ExpressApplication
 
-  Request Decorator
+  Request Decorator: Using to implement Restful API
   * RestController
   * RequestMapping
   * GetMapping
@@ -31,13 +32,37 @@ npm install express-spring
   * PatchMapping
   * DeleteMapping
 
-  Parameter Decorator
+  Parameter Decorator: Using to get Request Parameters in HTTP Request
   * RequestBody
   * RequestHeader
   * RequestParam
 
 ## Quick Start
-  Start a express application
+  Using [express-spring-generator](https://www.npmjs.com/package/express-spring-generator) to start express application with express-spring decorators.
+
+  Install express-spring-generator globally:
+  ```bash
+  npm install -g express-spring-generator
+  ```
+
+  Create a new application:
+  ```bash
+  express-spring new example
+  ```
+
+  Start application at http://localhost:404/:
+  ```bash
+  npm run startup
+  ```
+
+## Examples
+
+  ### Examples in [GitHub](https://github.com/George19890716/express-spring-example)
+  ```bash
+  git clone https://github.com/George19890716/express-spring-example
+  ```
+
+  ### Implement an express application
 
   ```bash
   import { ExpressApplication } from 'express-spring';
@@ -46,7 +71,7 @@ npm install express-spring
   class Main {}
   ```
 
-  Implement a post api for '/api/vi/example?id=1'
+  ### Implement a post api for '/api/vi/example?id=1'
 
   ```bash
   import { RestController, RequestMapping, PostMapping, RequestBody, RequestParam, RequestHeader } from 'express-spring';
