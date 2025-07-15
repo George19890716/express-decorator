@@ -20,10 +20,10 @@
 
 ## Features
 
-  Application Decorator: Using to implement an Express Application
+  ### Application Decorator: Using to implement an Express Application
   * ExpressApplication
 
-  Request Decorator: Using to implement Restful API
+  ### Request Decorator: Using to implement Restful API
   * RestController
   * RequestMapping
   * GetMapping
@@ -32,7 +32,7 @@
   * PatchMapping
   * DeleteMapping
 
-  Parameter Decorator: Using to get Request Parameters in HTTP Request
+  ### Parameter Decorator: Using to get Request Parameters in HTTP Request
   * RequestBody
   * RequestHeader
   * RequestParam
@@ -59,7 +59,7 @@
 
   ### Examples in [GitHub](https://github.com/George19890716/express-spring-example)
   ```bash
-  git clone https://github.com/George19890716/express-spring-example
+  git clone git@github.com:George19890716/express-spring-example.git
   ```
 
   ### Implement an express application
