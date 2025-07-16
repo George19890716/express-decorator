@@ -14,6 +14,8 @@ export enum ParameterType {
   Queries,
   Header,
   Headers,
+  PathVariable,
+  PathVariables,
 }
 
 export interface ParameterInfo {

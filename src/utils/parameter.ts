@@ -7,15 +7,19 @@ const getParameter = function(request: Request, parameterInfo: ParameterInfo): a
   const { type, name } = parameterInfo;
   switch(type) {
     case ParameterType.Body:
-      return body;
+      return body ?? {};
     case ParameterType.Queries:
-      return query;
+      return query ?? {};
     case ParameterType.Query:
       return query[name];
     case ParameterType.Headers:
       return headers;
     case ParameterType.Header:
       return headers[name];
+    case ParameterType.PathVariables:
+      return params ?? {};
+    case ParameterType.PathVariable:
+      return params[name];
     default: return {};
   }
 }
