@@ -36,6 +36,7 @@
   * RequestBody
   * RequestHeader
   * RequestParam
+  * PathVariable (Supported in 1.1.0)
 
 ## Quick Start
   Using [express-spring-generator](https://www.npmjs.com/package/express-spring-generator) to start express application with express-spring decorators.
@@ -87,6 +88,17 @@
     ) {
       // return of this function will be response of the api
       return 'Here is the response of this Post Request!';
+    }
+  }
+  ```
+
+  ### Implement a delete api for http://localhost:404/parameter/1
+  ```bash
+  @RestController
+  export class ParameterController {
+    @DeleteMapping('/parameter/{id}')
+    deleteParameter(@PathVariable('id') id) {
+      return { id };
     }
   }
   ```
