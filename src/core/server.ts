@@ -1,18 +1,29 @@
-import express from 'express';
 import cors from 'cors';
-import { router } from '../utils';
+import express from 'express';
+import fse from 'fs-extra';
+import path from 'path';
+import { getConfiguration, router } from '../utils';
 
 export function ExpressApplication(target: any) {
-  const app = express();
+  try {
+    const projectPath = process.cwd();
+    const configPath = path.join(projectPath, 'application.config.json');
+    const { port } = getConfiguration(configPath);
 
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
-  app.use(cors());
-  app.use(router);
+    const app = express();
 
-  app.set('port', 404);
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(cors());
+    app.use(router);
 
-  app.listen(app.get('port'), () => {
-    console.log('Mock Backend with Express Spring startup in ', app.get('port'));
-  })
+    app.set('port', port);
+
+    app.listen(app.get('port'), () => {
+      console.log('Mock Backend with Express Spring startup in ', app.get('port'));
+    });
+  } catch(e) {
+    console.error('Failed to startup Mock Backend with Express Spring!');
+    console.error(e?.message ?? e);
+  }
 }
