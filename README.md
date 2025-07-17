@@ -5,6 +5,7 @@
   * [Features](#Features)
   * [Quick Start](#Quick-Start)
   * [Examples](#Examples)
+  * [Application Configuration](#Application-Configuration)
   * [Developers](#Developers)
   * [License](#license)
 
@@ -51,6 +52,11 @@
   express-spring new example
   ```
 
+  Input the number of port or using default value:
+  ```bash
+  ? Please input port of the application (404)
+  ```
+
   Start application at http://localhost:404/:
   ```bash
   npm run startup
@@ -92,6 +98,15 @@
   }
   ```
 
+  Import all controller files
+  ```bash
+  import { ExpressApplication } from 'ts-decorators';
+  import './controllers';
+
+  @ExpressApplication
+  class Main {} 
+  ```
+
   ### Implement a delete api for http://localhost:404/parameter/1
   ```bash
   @RestController
@@ -102,6 +117,12 @@
     }
   }
   ```
+
+  ## Application Configuration
+  Entrie configuration can be modified in application.config.json (only "Port" can be changed in current version).
+
+  ### Port
+  Default value is 404, and the valid range is from 0 to 50,000 inclusive.
 
 ## Developers
   The original author of Express Spring is [Xu Ming](https://github.com/George19890716)
