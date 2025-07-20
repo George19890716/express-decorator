@@ -15,7 +15,7 @@ const getParameter = function(request: Request, parameterInfo: ParameterInfo): a
     case ParameterType.Headers:
       return headers;
     case ParameterType.Header:
-      return headers[name];
+      return headers[name?.toLowerCase()];
     case ParameterType.PathVariables:
       return params ?? {};
     case ParameterType.PathVariable:
