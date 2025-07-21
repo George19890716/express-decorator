@@ -21,10 +21,10 @@
 
 ## Features
 
-  ### Application Decorator: Using to implement an Express Application
+  ### Application Decorator: Implement an Express Application
   * ExpressApplication
 
-  ### Request Decorator: Using to implement Restful API
+  ### Request Decorators: Implement Restful API
   * RestController
   * RequestMapping
   * GetMapping
@@ -33,11 +33,15 @@
   * PatchMapping
   * DeleteMapping
 
-  ### Parameter Decorator: Using to get Request Parameters in HTTP Request
+  ### Parameter Decorators: Extract Request Parameters in HTTP Request
   * RequestBody
   * RequestHeader
   * RequestParam
   * PathVariable (Supported in 1.1.0)
+
+  ### Other Decorator: 
+  * Value (Supported in 1.3.0, extract JSON format data within "values" folder)
+  
 
 ## Quick Start
   Using [express-spring-generator](https://www.npmjs.com/package/express-spring-generator) to start express application with express-spring decorators.
@@ -119,10 +123,13 @@
   ```
 
   ## Application Configuration
-  Entrie configuration can be modified in application.config.json (only "Port" can be changed in current version).
+  Entrie configuration can be modified in application.config.json.
 
   ### Port
   Default value is 404, and the valid range is from 0 to 50,000 inclusive.
+
+  ### ValuesFolder
+  Default value is "values", to define the folder for storing JSON format data and extract them by "Value" decorator.
 
 ## Developers
   The original author of Express Spring is [Xu Ming](https://github.com/George19890716)
