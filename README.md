@@ -122,29 +122,27 @@
   }
   ```
 
-  ### Using of Value decorator
-  JSON file in "values/response/example.json"
+  ### Using Value decorator
+  JSON file in "values/example/message.json"
   ```bash
   {
     "value": "This is an example of using Value decorator!"
   }
   ```
 
-  Extract data from "values/response/example.json" in Rest Controller file
+  Extract data from "values/example/message.json" in Rest Controller
   ```bash
-    import { RestController, Value, GetMapping } from "express-spring-local";
+  @RestController
+  export class ValueController {
+    @Value('example.message.value')
+    private value: string; 
 
-    @RestController
-    export class ValueController {
-      @Value('response.example.value')
-      private value: string; 
-
-      @GetMapping('/value')
-      getValue() {
-        // "this.value" will be "This is an example of using Value decorator!"
-        return this.value;
-      }
+    @GetMapping('/value')
+    getValue() {
+      // "this.value" will be "This is an example of using Value decorator!"
+      return this.value;
     }
+  }
   ```
 
 ## Application Configuration
