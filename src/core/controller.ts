@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { KEY } from '../models';
-import { getFullPath, getParameters, router } from '../utils';
+import { getContainer, getFullPath, getParameters, router } from '../utils';
 
 export function RestController(target: any) {
   const rootPath = Reflect.getMetadata(KEY.rootPath, target) ?? '/';
@@ -15,8 +15,9 @@ export function RestController(target: any) {
 
       router[requestType](fullPath, (req: Request, res: Response) => {
         try {
+          const container = getContainer(target);
           const args = getParameters(target, methodName, req);
-          const response = handler(...args);
+          const response = handler.bind(container)(...args);
           res.send(response);
         } catch(e: any) {
             const code = e?.code || 500;

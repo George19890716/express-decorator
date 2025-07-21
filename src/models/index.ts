@@ -6,6 +6,10 @@ export enum KEY {
   requestType = 'requestType',
   requestPath = 'requestPath',
   parametersMap = 'parametersMap',
+
+  // For metadata in value decorator
+  valueKeyMap = 'valueKeyMap', 
+  controllerContainer = 'controllerContainer',
 };
 
 export enum ParameterType {

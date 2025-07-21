@@ -6,7 +6,7 @@ function Values() {}
 
 export function initialValues(valuesPath: string) {
   const values = getValues(valuesPath);
-  Reflect.defineMetadata('Values', Values, values);
+  Reflect.defineMetadata('Values', values, Values);
 }
 
 export function getValues(valuesPath: string) {
@@ -22,7 +22,7 @@ export function getValues(valuesPath: string) {
       if (!fileInfo.directory && path.extname(file) === '.json') {
         const key = path.basename(file, '.json');
         data[key] = !fileInfo.empty ? fse.readJsonSync(filePath) : null;
-      } else if (fileInfo.directory && fse.readdirSync(filePath)) {
+      } else if (fileInfo.directory && fse.readdirSync(filePath)?.length > 0) {
         data[file] = getValues(filePath);
       }
     } catch(e) {
@@ -32,9 +32,9 @@ export function getValues(valuesPath: string) {
   return data;
 }
 
-export function getValuesByKeys(keys: string) {
+export function getValueByKeys(keys: string) {
   if (!keys) return null;
-  let values = Reflect.getMetadata('Values', Values);
+  let values = Reflect.getMetadata('Values', Values) || {};
   keys.split('.').forEach(key => {
     values = values[key] ?? null;
   });
