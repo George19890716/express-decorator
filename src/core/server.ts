@@ -1,14 +1,18 @@
 import cors from 'cors';
 import express from 'express';
-import fse from 'fs-extra';
 import path from 'path';
-import { getConfiguration, router } from '../utils';
+import { getConfiguration, initialValues, router } from '../utils';
 
 export function ExpressApplication(target: any) {
   try {
     const projectPath = process.cwd();
     const configPath = path.join(projectPath, 'application.config.json');
     const { port } = getConfiguration(configPath);
+
+    const valuesPath = path.join(process.cwd(), 'values');
+    initialValues(valuesPath);
+
+    console.log('Data in "values" folder has been initialized');
 
     const app = express();
 
