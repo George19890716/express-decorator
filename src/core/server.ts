@@ -7,12 +7,12 @@ export function ExpressApplication(target: any) {
   try {
     const projectPath = process.cwd();
     const configPath = path.join(projectPath, 'application.config.json');
-    const { port } = getConfiguration(configPath);
+    const { port, valuesFolder } = getConfiguration(configPath);
 
-    const valuesPath = path.join(process.cwd(), 'values');
+    const valuesPath = path.join(process.cwd(), valuesFolder);
     initialValues(valuesPath);
 
-    console.log('Data in "values" folder has been initialized');
+    console.log(`Data in "${valuesFolder}" folder has been initialized!`);
 
     const app = express();
 

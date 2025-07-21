@@ -6,14 +6,17 @@ export function getConfiguration(configPath: string) {
     const { exist, empty, directory } = getFileInfo(configPath);
     if (exist && !empty && !directory) {
       const config = JSON.parse(fse.readFileSync(configPath, 'utf8'));
-      let port = 404;
+      let port = 404, valuesFolder = 'values';
       if (checkValidPort(config?.Port ?? config?.port)) {
-        port = config.Port;
+        port = config.Port ?? config?.port;
       }
-      return { port };
+      if (config?.ValuesFolder ?? config?.valuesFolder ?? config?.valuesfolder) {
+        valuesFolder = config?.ValuesFolder ?? config?.valuesFolder ?? config?.valuesfolder;
+      }
+      return { port, valuesFolder };
     } else {
-      console.log('Failed to get port in configuration file, will use the 404 as default!');
-      return { port: 404 };
+      console.log('Failed to get configuration of application, will use the default setting!');
+      return { port: 404, valuesFolder: 'values' };
     }
   } catch (e) {
     console.log('Failed to get configuration file!');
