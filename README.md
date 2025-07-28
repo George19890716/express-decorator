@@ -41,6 +41,7 @@
 
   ### Other Decorator: 
   * Value (Supported in 1.3.0, extract JSON format data within "values" folder)
+  * Wait (Supported in 1.3.1, simulating API Delays)
   
 
 ## Quick Start
