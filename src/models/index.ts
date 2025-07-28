@@ -5,6 +5,7 @@ export enum KEY {
   rootPath = 'rootPath',
   requestType = 'requestType',
   requestPath = 'requestPath',
+  requestTime = 'requestTime',
   parametersMap = 'parametersMap',
 
   // For metadata in value decorator

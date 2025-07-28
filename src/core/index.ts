@@ -5,3 +5,4 @@ export { GetMapping, PostMapping, PutMapping, PatchMapping, DeleteMapping, Reque
 export { RequestBody, RequestParam, RequestHeader, PathVariable } from './parameter';
 export { ExpressApplication } from './server';
 export { Value } from './value';
+export { Wait } from './wait';

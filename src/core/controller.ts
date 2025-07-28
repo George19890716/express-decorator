@@ -8,16 +8,20 @@ export function RestController(target: any) {
   for (let methodName of Reflect.ownKeys(target?.prototype || {})) {
     const requestType = Reflect.getMetadata(KEY.requestType, target.prototype, methodName);
     const requestPath = Reflect.getMetadata(KEY.requestPath, target.prototype, methodName);
+    const requestTime = Reflect.getMetadata(KEY.requestTime, target.prototype, methodName);
 
     if (requestType && requestPath) {
       const handler = target.prototype[methodName];
       const fullPath = getFullPath({ rootPath, requestPath });
 
-      router[requestType](fullPath, (req: Request, res: Response) => {
+      router[requestType](fullPath, async (req: Request, res: Response) => {
         try {
           const container = getContainer(target);
           const args = getParameters(target, methodName, req);
           const response = handler.bind(container)(...args);
+          if (requestTime) {
+            await (async () => { await new Promise(resolve => setTimeout(resolve, requestTime)) })();
+          }
           res.send(response);
         } catch(e: any) {
             const code = e?.code || 500;

@@ -13,7 +13,10 @@ export function ExpressApplication(target: any) {
     const valuesPath = path.join(process.cwd(), valuesFolder);
     initialValues(valuesPath);
 
-    console.log(chalk.green(`Data in "${valuesFolder}" folder has been initialized!`));
+    console.log('');
+    console.log(chalk.blue(`Start to initialize Express Spring Application!`));
+    console.log('');
+    console.log(chalk.blue(`Data in "${valuesFolder}" folder has been initialized!`));
 
     const app = express();
 
@@ -25,6 +28,7 @@ export function ExpressApplication(target: any) {
     app.set('port', port);
 
     app.listen(app.get('port'), () => {
+      console.log('');
       console.log(chalk.green('Mock Backend with Express Spring startup in ', app.get('port')));
     });
   } catch(e) {
